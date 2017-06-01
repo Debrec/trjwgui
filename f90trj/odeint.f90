@@ -37,10 +37,10 @@ SUBROUTINE adaptive(yi,n,xi,xf,htol,mmax,derivs)
 					h1 = (x2-x1)/m
 					CALL rk4(y1,x1,x1+h1,y2,2,derivs)
 					m= m + 1
-        ELSE IF (m.GE.mmax) THEN
-          WRITE(*,*) 'ERROR - m mayor o igual que mmax en adaptive ode'
-          STOP
-    		ELSE
+        		ELSE IF (m.GE.mmax) THEN
+         			 WRITE(*,*) 'ERROR - m mayor o igual que mmax en adaptive ode'
+          			STOP
+    			ELSE
 					EXIT
 				END IF
 			END IF

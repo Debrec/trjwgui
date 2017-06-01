@@ -145,7 +145,7 @@ CONTAINS
        V(ipart,1)=V_part
        PV(ipart,1)=pv_part
        O3(ipart,1)=o3_part
-			 WRITE(*,*) "Procesando particula: ",ipart
+			 !WRITE(*,*) "Procesando particula: ",ipart
        CALL trayect(0.,time(1),time(2))
        CALL Latcheck2()
 
@@ -164,17 +164,17 @@ CONTAINS
       CALL rangcheck(Long(i,1),Lat(i,1))
     END DO
 		IF((FLOOR(REAL(Ntime*(itout)/Nout)).EQ.(itime)).OR.(itime.EQ.1)) THEN
-		   CALL jul2greg(rtime,tyear,tmonth,tday,thour)
+		!   CALL jul2greg(rtime,tyear,tmonth,tday,thour)
        CALL write_trj_nc_file(ncid_trj,rtime, &
             (/'Long ', 'lat  ','Temp ','Press','Pv   ','O3   '/) ,(/Long(:,1),&
             lat(:,1),T(:,1),P(:,1),PV(:,1),O3(:,1)/))
     END IF
 
-    CALL jul2greg(rtime,tyear,tmonth,tday,thour)
-    WRITE(0,FMT='(A,F12.2,I4,X,I2.2,"/",I2.2,"/",I4,X,I2.2,":",I2.2,":",I2.2,X,"%",F5.2)') 'Tiempo',time(1),itime, &
-         NINT(tday),NINT(tmonth),NINT(tyear),FLOOR(thour),FLOOR((thour-FLOOR(thour))*60.), &
-         FLOOR(((thour-FLOOR(thour))*60.-FLOOR((thour-FLOOR(thour))*60.))*60.), REAL(100.*REAL(itime)/REAL(Ntime))
-
+    !CALL jul2greg(rtime,tyear,tmonth,tday,thour)
+    !WRITE(0,FMT='(A,F12.2,I4,X,I2.2,"/",I2.2,"/",I4,X,I2.2,":",I2.2,":",I2.2,X,"%",F5.2)') 'Tiempo',time(1),itime, &
+    !     NINT(tday),NINT(tmonth),NINT(tyear),FLOOR(thour),FLOOR((thour-FLOOR(thour))*60.), &
+    !     FLOOR(((thour-FLOOR(thour))*60.-FLOOR((thour-FLOOR(thour))*60.))*60.), REAL(100.*REAL(itime)/REAL(Ntime))
+    WRITE(0,FMT='(A,I4,X,"%",F5.2)') 'Tiempo', itime, REAL(100.*REAL(itime)/REAL(Ntime))
     Lat(:,1)=Lat(:,2)
     Long(:,1)=Long(:,2)
 
@@ -184,11 +184,12 @@ CONTAINS
           CALL rangcheck(Long(i,2),Lat(i,2))
        END DO
        rtime=irtime+REAL(Ntime-1)*its/60.
-       CALL jul2greg(rtime,tyear,tmonth,tday,thour)
+       !CALL jul2greg(rtime,tyear,tmonth,tday,thour)
        itime = itime + 1
-       WRITE(0,FMT='(A,F12.2,I4,X,I2.2,"/",I2.2,"/",I4,X,I2.2,":",I2.2,":",I2.2,X,"%",F6.2)') 'Tiempo',time(1),itime, &
-       NINT(tday),NINT(tmonth),NINT(tyear),FLOOR(thour),FLOOR((thour-FLOOR(thour))*60.), &
-       FLOOR(((thour-FLOOR(thour))*60.-FLOOR((thour-FLOOR(thour))*60.))*60.),REAL(100.*REAL(itime)/REAL(Ntime))
+       !WRITE(0,FMT='(A,F12.2,I4,X,I2.2,"/",I2.2,"/",I4,X,I2.2,":",I2.2,":",I2.2,X,"%",F6.2)') 'Tiempo',time(1),itime, &
+       !NINT(tday),NINT(tmonth),NINT(tyear),FLOOR(thour),FLOOR((thour-FLOOR(thour))*60.), &
+       !FLOOR(((thour-FLOOR(thour))*60.-FLOOR((thour-FLOOR(thour))*60.))*60.),REAL(100.*REAL(itime)/REAL(Ntime))
+       WRITE(0,FMT='(A,I4,X,"%",F5.2)') 'Tiempo', itime, REAL(100.*REAL(itime)/REAL(Ntime))
 
        CALL write_trj_nc_file(ncid_trj,rtime, &
             (/'Long ', 'lat  ','Temp ','Press','Pv   ','O3   '/) ,(/Long(:,2),&
