@@ -1,0 +1,14 @@
+
+PROGRAM=interpol
+
+SOURCE=../f90trj/interpol.f90 tests.f90 tests_interpol.f90 
+
+F95=gfortran
+
+FFLAGS=-fdefault-real-8 -fbounds-check
+
+LIBS=-L/lib -L/usr/lib -L../Lib -lnetcdff -lslatec
+INCLUDES = -I/usr/include -I ./
+
+all : $(SOURCE)
+	$(F95) $(FFLAGS) $(INCLUDES) $(SOURCE) -o $(PROGRAM) $(LIBS)

@@ -1,0 +1,6 @@
+1
+Cuando se corre para datos en varios días consecutivos se corta:
+
+Verificar si no se corta justo cuando aparecén diez salidas consecutivas
+
+Corre aproximadamente 2 días consecutivos y un poco mas.

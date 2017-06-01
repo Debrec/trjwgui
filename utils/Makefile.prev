@@ -1,0 +1,29 @@
+
+PRGSTR=strgrid
+PRGRD=trjread
+
+SRCSTR=strgridmain.f90 spline.f90 stereograph.f90
+SRCRD=date_conv.f90 trj_netcdf_r.f90 
+
+F95=pgf90
+#F95=ifort
+
+FFLAGS= -fastsse -Kieee -Minfo -Mconcur -r8
+#FFLAGS=FFLAGS= -parallel -xN -O3 -ipo -r8 -mp
+
+LIBS=-L/usr/local/netcdf-3.6.1-pgf/lib -lnetcdf -lslatec
+INCLUDES = -I/usr/local/netcdf-3.6.1-pgf/include
+
+#LIBS=-L/usr/local/netcdf-3.6.1-ifort/lib -lnetcdf -lslatec
+#INCLUDES = -I/usr/local/netcdf-3.6.1-ifort/include
+
+
+all : $(SRCSTR) $(SRCRD)
+	$(F95) $(FFLAGS) $(INCLUDES) $(SRCSTR) -o $(PRGSTR) $(LIBS)
+	$(F95) $(FFLAGS) $(INCLUDES) $(SRCRD) -o $(PRGRD) $(LIBS)
+
+$(PRGSTR) : $(SRCSTR)
+	$(F95) $(FFLAGS) $(INCLUDES) $(SRCSTR) -o $(PRGSTR) $(LIBS)
+
+$(PRGRD) : $(SRCRD)
+	$(F95) $(FFLAGS) $(INCLUDES) $(SRCRD) -o $(PRGRD) $(LIBS)
