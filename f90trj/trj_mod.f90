@@ -179,29 +179,8 @@ CONTAINS
 
     intpm=2
 
-    IF(intpm.EQ.1) THEN
-      !  CALL interp2P(olong,olat,U_part,long_surf(1:nx,1),&
-      !       lat_surf(1,1:ny),U_surf,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,V_part,long_surf(1:nx,1),&
-      !       lat_surf(1,1:ny),V_surf,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,T_part,long_surf(1:nx,1),&
-      !       lat_surf(1,1:ny),T_surf,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,P_part,long_surf(1:nx,1),&
-      !       lat_surf(1,1:ny),P_surf,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,Alt_part,long_surf(1:nx,1),&
-      !       lat_surf(1,1:ny),Alt_surf,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,pv_part,long_surf(1:nx,1),&
-      !       lat_surf(1,1:ny),pv_surf,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,o3_part,long_surf(1:nx,1),&
-      !       lat_surf(1,1:ny),o3_surf,nx,ny)
-
-    ELSE IF (intpm.EQ.2) THEN
+    !IF(intpm.EQ.1) THEN
+    IF (intpm.EQ.2) THEN
 		   U_part = intp2d(olong,olat,long_surf(1:nx,1),&
             lat_surf(1,1:ny),U_surf,nx,ny)
 
@@ -440,30 +419,8 @@ CONTAINS
 
     intpm=2
 
-    IF(intpm.EQ.1) THEN
-
-      !  CALL interp2P(olong,olat,U_part,long_curr(1:nx,1),&
-      !       lat_curr(1,1:ny),U2a,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,V_part,long_curr(1:nx,1),&
-      !       lat_curr(1,1:ny),V2a,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,T_part,long_curr(1:nx,1),&
-      !       lat_curr(1,1:ny),T2a,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,Alt_part,long_curr(1:nx,1),&
-      !       lat_curr(1,1:ny),Alt2a,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,pv_part,long_curr(1:nx,1),&
-      !       lat_curr(1,1:ny),pv2a,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,o3_part,long_curr(1:nx,1),&
-      !       lat_curr(1,1:ny),O32a,nx,ny)
-			 !
-      !  CALL interp2P(olong,olat,W_part,long_curr(1:nx,1),&
-      !       lat_curr(1,1:ny),W2a,nx,ny)
-
-    ELSE IF (intpm.EQ.2) THEN
+    !IF(intpm.EQ.1) THEN
+    IF (intpm.EQ.2) THEN
 
 	     U_part = intp2d(olong,olat,long_curr(1:nx,1),&
 	          lat_curr(1,1:ny),U2a,nx,ny)

@@ -49,6 +49,8 @@ using namespace std;
 
 extern "C" void trj_();
 
+using namespace std;
+
 class datos {
 public:
     int nTime, nOut, nPartX, nPartY;
@@ -88,7 +90,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
    wincl.lpszMenuName = NULL;
    wincl.cbClsExtra = 0;
    wincl.cbWndExtra = 0;
-   wincl.hbrBackground = GetSysColorBrush(COLOR_BACKGROUND);
+   wincl.hbrBackground = GetSysColorBrush(COLOR_WINDOW);
 ;
 
    /* Registrar la clase de ventana, si falla, salir del programa */
@@ -368,9 +370,9 @@ int NombreArchivo(HWND hwnd,string &fileName) {
 
     // Display the Open dialog box.
 
-    if (GetSaveFileName(&ofn)==TRUE) {
-        fileName.assign(ofn.lpstrFile);
-    }
+   // if (GetSaveFileName(&ofn)==TRUE) {
+    //    fileName.assign(ofn.lpstrFile);
+    //}
 
     return 0;
 }
@@ -399,8 +401,8 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
 			//pthread_cancel(thread);
 			//pthread_exit(NULL);
 			//CloseHandle(Handle_Of_Thread_1);
-			DeleteObject(pincel);
-			DeleteObject(hfont);
+			//DeleteObject(pincel);
+			//DeleteObject(hfont);
 			PostQuitMessage(0);    /* env�a un mensaje WM_QUIT a la cola de mensajes */
 			break;
         case WM_COMMAND:
@@ -450,13 +452,13 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPar
             CrearBoton(hwnd,lParam,106,300,60,20,ID_BUTTON_RESET,"Reset");
             CrearBoton(hwnd,lParam,176,300,60,20,ID_BUTTON_CANCELAR,"Cancelar");
            // CrearBoton(hwnd,lParam,246,300,60,20,ID_BUTTON_RUN,"RUN");
-           pincel = CreateSolidBrush(RGB(0,0,0));
-				   hfont = (HFONT)GetStockObject( DEFAULT_GUI_FONT );
+           //pincel = CreateSolidBrush(RGB(0,0,0));
+				  // hfont = (HFONT)GetStockObject( DEFAULT_GUI_FONT );
            return 0;
-        case WM_CTLCOLOREDIT:
-           SetBkColor((HDC)wParam, RGB(0,0,0));
-           SetTextColor((HDC)wParam, RGB(255,255,255));
-           return (LRESULT)pincel;
+        //case WM_CTLCOLOREDIT:
+           //SetBkColor((HDC)wParam, RGB(0,0,0));
+           //SetTextColor((HDC)wParam, RGB(255,255,255));
+           //return (LRESULT)pincel;
 					/* case WM_CTLCOLORSTATIC:
 	      	 SetBkColor((HDC)wParam, GetSysColor(COLOR_BACKGROUND));
 	         SetTextColor((HDC)wParam, RGB(255,255,255));

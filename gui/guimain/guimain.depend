@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1477271928 source:d:\documentos\estudio\trj\trjwgui\gui\main.cpp
-	<windows.h>
-	<string>
-	<iostream>
-	<cstdlib>
-	<fstream>
-	<pthread.h>
-
